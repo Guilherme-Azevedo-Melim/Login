@@ -4,6 +4,7 @@ import {Button} from "../../components/Button"
 import * as C from "./styled"
 import { Link, useNavigate } from "react-router-dom"
 import {useAuth} from "../../hooks/useAuth"
+import  axios  from "axios"
 
 export const Signup = () => {
   const [email, setEmail] = useState("")
@@ -14,7 +15,9 @@ export const Signup = () => {
 
   const { signup } = useAuth()
 
-  const handleSignup = () => {
+  const handleSignup = (e) => {
+    e.preventDefault()
+
     if (!email | !emailConf | !senha) {
       setError("Preencha todos os campos")
       return
@@ -29,6 +32,13 @@ export const Signup = () => {
       setError(result)
       return
     }
+
+    axios.post("http://localhost:3306/register",{
+      password: senha,
+      email: email
+    }).then((res)=>{
+      console.log(res)
+    })
 
     alert("Usuário cadatrado com sucesso!")
     navigate("/")

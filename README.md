@@ -2,6 +2,10 @@
 
 Projeto em andamento, ainda para ser instalado mais funcionalidades.
 
+## Deploy
+
+- https://login-p6g2.onrender.com
+
 ## Funcional
 
 - Cadastro
